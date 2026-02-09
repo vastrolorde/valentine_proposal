@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffeef2;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px; /* Space between buttons */
+            min-height: 50px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #f8bbd0;
+            color: #ad1457;
+            /* No absolute position here so it stays next to "Yes" initially */
+            transition: 0.1s;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="http://googleusercontent.com/image_generation_content/11" alt="Dudung">
+        <h1>Will you be my Valentine? ❤️</h1>
+        <div class="btn-group">
+            <button id="yesBtn" onclick="accepted()">Yes!</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+
+        noBtn.addEventListener('mouseover', () => {
+            // Change to absolute positioning ONLY when the user tries to click it
+            noBtn.style.position = 'absolute';
+            
+            // Generate coordinates within the window
+            const newX = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
+            const newY = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
+
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
+        });
+
+        function accepted() {
+            alert("Yay! Best decision ever! 🥰");
+            document.body.innerHTML = `
+                <div style="text-align:center;">
+                    <h1 style="color:#ff4d6d; font-size: 3rem;">💖 IT'S A DATE! 💖</h1>
+                    <p style="font-size: 1.2rem;">Can't wait to see you!</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
